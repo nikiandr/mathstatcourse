@@ -291,8 +291,10 @@ $$\mathcal{L}( \vec{x}, a ) = \prod_{k = 1}^n \mathbb{P}
 \frac{a^{\sum_{k =1}^n x^k}}{(1 + a)^{\sum_{k =1}^n x^k + n}}$$
 $$\ln \mathcal{L}( \vec{x}, a ) = (\sum_{k=1}^n x_k)\ln a - 
 ((\sum_{k=1}^n x_k) + n)\ln(1+a)$$
-$$\frac{\partial\ln \mathcal{L}( \vec{x}, a )}{\partial a} = 
-\frac{1}{a(1+a)}\sum_{k=1}^n x_k - \frac{n}{1+a} = 0$$
+\begin{equation}
+  \frac{\partial\ln \mathcal{L}( \vec{x}, a )}{\partial a} = 
+  \frac{1}{a(1+a)}\sum_{k=1}^n x_k - \frac{n}{1+a} = 0
+\end{equation}
 $$\frac{1}{a(1+a)}\sum_{k=1}^n x_k = \frac{n}{1+a}$$
 $$a = \frac{1}{n} \sum_{k=1}^n x_k$$
 Отримали оцінку параметра а закона Паскаля методом 
@@ -307,12 +309,32 @@ $$\frac{\partial^2\ln \mathcal{L}( \vec{x}, a )}{\partial^2 a} =
   \left.{\frac{\partial^2\ln \mathcal{L}( \vec{x}, a )}{\partial^2 a}}
   \right|_{a = a^*} = -\frac{n^2}{(1+a^*)^2}({\frac{1}{a^*} + 1}) < 0
 \end{equation}
-Обома методами отримали однакову оцінку параметра а
+Достатня умова виконана.
+\newline
+Обома методами отримали однакову оцінку параметра а:
 $$(a^*)_{\text{мм}} = (a^*)_{\text{мп}} = a^* = \frac{1}{n}
 \sum_{k=1}^n \xi_k = \overline{\xi}$$
 Перевіримо властивості цієї оцінки:
 \begin{enumerate}
-  \item \textbf{Незміщенність.} Вже доведена раніше (див.\ref{bias} cтор.9)
-  \item \textbf{Конзистентність.}
+  \item \textbf{Незміщенність.} Вже доведена раніше (див. 2 cтор.9)
+  \item \textbf{Конзистентність.} Так як $\{\xi_k\}$ - i.i.d\footnote{
+    i.i.d. - independent identically distributed -  незалежні та 
+    однаково розподілені випадкові величини
+  }
+  , для $\forall \xi_k :E_{\xi_k} = a < \infty, D_{\xi_k} = a^2 + a - 
+  \text{рівномірно обмежені}$, то
+  \newline 
+  $a^*\xrightarrow[n\to\infty]{\mathbb{P} }E_{a^*} = a$.
+  А це і означає що оцінка конзистентна.
+  \newpage
+  \item \textbf{Ефективність.} Розглянемо вираз 
+  $\frac{\partial\ln \mathcal{L}( \vec{x}, a )}{\partial a}$.
+  Його вже було знайдено раніше ( див. 4 стор. 12 ).
+  $$\frac{\partial\ln \mathcal{L}( \vec{x}, a )}{\partial a} = 
+  \frac{1}{a(1+a)}\sum_{k=1}^n x_k - \frac{n}{1+a} = $$
+  $$= \frac{n}{a(1+a)}(\frac{1}{n}\sum_{k=1}^n x_k - a) = $$
+  $$= C(n, a)(a^* - a)$$
+  Таким чином, за наслідком з нерівності Рао-Крамера, оцінка $a^* = 
+  \frac{1}{n}\sum_{k=1}^n \xi_k$ є ефективною.
 \end{enumerate}
 \end{document}
